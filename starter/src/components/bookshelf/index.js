@@ -1,9 +1,10 @@
 import React from 'react'
+import BookshelfTitle from '../bookshelf-title';
 
-function Bookshelf() {
+function Bookshelf({ bookshelfTitle }) {
     return (
         <div className="bookshelf">
-            <h2 className="bookshelf-title">Currently Reading</h2>
+            <BookshelfTitle bookshelfTitle={bookshelfTitle} />
             <div className="bookshelf-books">
                 <ol className="books-grid">
                     <li>

@@ -34,7 +34,7 @@ function App() {
           </div>
           <div className="list-books-content">
             <div>
-              <Bookshelf />
+              <Bookshelf bookshelfTitle={"Currently Reading"} />
               <div className="bookshelf">
                 <h2 className="bookshelf-title">Want to Read</h2>
                 <div className="bookshelf-books">
