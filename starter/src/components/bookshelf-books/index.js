@@ -10,10 +10,10 @@ function BookshelfBooks({ books, onChangeBookshelf }) {
                     <li key={book.id}>
                         <Book
                             book={book}
-                            image={book.imageLinks.thumbnail}
+                            image={book?.imageLinks?.thumbnail}
                             title={book.title}
                             authors={book.authors}
-                            shelf={book.shelf}
+                            shelf={book.shelf ?? "none"}
                             onChangeBookshelf={onChangeBookshelf} />
                     </li>
                 ))}

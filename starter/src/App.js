@@ -43,8 +43,12 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
-          <Route path="/search" element={<SearchPage />} />
-          <Route exact path="/"
+          <Route
+            path="/search"
+            element={<SearchPage
+              onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />} />
+          <Route
+            exact path="/"
             element={<MainPage
               books={books}
               onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />} />

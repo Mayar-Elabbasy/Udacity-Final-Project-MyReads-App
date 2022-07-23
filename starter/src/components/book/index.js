@@ -14,16 +14,16 @@ function Book({ book, image, title, authors, shelf, onChangeBookshelf }) {
                         backgroundImage: `url(${image})`,
                     }}
                 ></div>
-                <BookshelfChanger currentShelf={shelf} book={book} onChangeBookshelf={onChangeBookshelf} />
+                <BookshelfChanger currentShelf={shelf ?? "none"} book={book} onChangeBookshelf={onChangeBookshelf} />
             </div>
             <div className="book-title">{title}</div>
-            {authors.length && (
+            {authors?.length ? (
                 <>
                     {authors.map(author => (
                         <div className="book-authors" key={author}>{author}</div>
                     ))}
                 </>
-            )}
+            ) : <div className="book-authors">Authors data isn't provided yet</div>}
         </div>
     )
 }
@@ -31,9 +31,9 @@ function Book({ book, image, title, authors, shelf, onChangeBookshelf }) {
 // Add component props type checking
 Book.propTypes = {
     book: PropTypes.object.isRequired,
-    image: PropTypes.string.isRequired,
+    image: PropTypes.string,
     title: PropTypes.string.isRequired,
-    authors: PropTypes.array.isRequired,
+    authors: PropTypes.array,
     shelf: PropTypes.string.isRequired,
     onChangeBookshelf: PropTypes.func.isRequired,
 }
