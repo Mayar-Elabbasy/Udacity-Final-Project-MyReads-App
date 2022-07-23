@@ -3,6 +3,8 @@ import { NotificationManager } from 'react-notifications';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from "../utils/BooksAPI";
 import BookshelfBooks from '../components/bookshelf-books';
+import ExportExcel from '../components/export-excel';
+import PropTypes from 'prop-types';
 
 function SearchPage({ onChangeBookshelf }) {
     const [query, setQuery] = useState("");
@@ -51,11 +53,21 @@ function SearchPage({ onChangeBookshelf }) {
             </div>
             <div className="search-books-results">
                 <ol className="books-grid">
-                    <BookshelfBooks books={searchReasult} onChangeBookshelf={onChangeBookshelf} />
+                    {searchReasult.length >= 1 && (
+                        <>
+                            <ExportExcel books={searchReasult} searchQuery={query} />
+                            <BookshelfBooks books={searchReasult} onChangeBookshelf={onChangeBookshelf} />
+                        </>
+                    )}
                 </ol>
             </div>
         </div>
     )
+}
+
+// Add component props type checking
+SearchPage.propTypes = {
+    onChangeBookshelf: PropTypes.func.isRequired,
 }
 
 export default SearchPage;
