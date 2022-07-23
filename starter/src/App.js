@@ -2,6 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import Bookshelf from "./components/bookshelf";
 import * as BooksAPI from "./BooksAPI";
+import 'react-notifications/lib/notifications.css';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
@@ -18,16 +20,20 @@ function App() {
 
   const handleChangeBookshelf = (book, shelf) => {
     const change = async () => {
-      await BooksAPI.update(book, shelf).then(() => {
-        // update the value of the bookshelf with the new shelf
-        book.shelf = shelf;
-        // remove the selected book from the books array as it contains old data
-        let newBooks = books.filter(selectedBook => book.id !== selectedBook.id)
-        // add the book with updated shelf info to the books array
-        newBooks.push(book);
-        // update the state accordingly
-        setBooks(newBooks);
-      });
+      await BooksAPI.update(book, shelf)
+        .then(() => {
+          NotificationManager.success(`${book.title} has been moved to the new shelf successfully`);
+          // update the value of the bookshelf with the new shelf
+          book.shelf = shelf;
+          // remove the selected book from the books array as it contains old data
+          let newBooks = books.filter(selectedBook => book.id !== selectedBook.id)
+          // add the book with updated shelf info to the books array
+          newBooks.push(book);
+          // update the state accordingly
+          setBooks(newBooks);
+        }).catch(() => {
+          NotificationManager.error(`Something went wrong kindly try again`);
+        });
     };
     change();
   }
@@ -80,6 +86,7 @@ function App() {
           </div>
         </div>
       )}
+      <NotificationContainer />
     </div>
   );
 }
