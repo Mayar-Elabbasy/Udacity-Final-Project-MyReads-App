@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { NotificationManager } from 'react-notifications';
 import { Link } from 'react-router-dom';
-import * as BooksAPI from "../BooksAPI";
+import * as BooksAPI from "../utils/BooksAPI";
 import BookshelfBooks from '../components/bookshelf-books';
 
 function SearchPage({ onChangeBookshelf }) {

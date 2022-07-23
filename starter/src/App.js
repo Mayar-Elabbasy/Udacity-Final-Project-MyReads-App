@@ -1,6 +1,6 @@
 import "./App.css";
 import { useEffect, useState } from "react";
-import * as BooksAPI from "./BooksAPI";
+import * as BooksAPI from "./utils/BooksAPI";
 import 'react-notifications/lib/notifications.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import MainPage from "./pages/main-page";
