@@ -1,5 +1,6 @@
 import React from 'react'
 import BookshelfChanger from '../bookshelf-changer';
+import PropTypes from 'prop-types';
 
 function Book({ book, image, title, authors, shelf, onChangeBookshelf }) {
     return (
@@ -25,6 +26,16 @@ function Book({ book, image, title, authors, shelf, onChangeBookshelf }) {
             )}
         </div>
     )
+}
+
+// Add component props type checking
+Book.propTypes = {
+    book: PropTypes.object.isRequired,
+    image: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.array.isRequired,
+    shelf: PropTypes.string.isRequired,
+    onChangeBookshelf: PropTypes.func.isRequired,
 }
 
 export default Book;
