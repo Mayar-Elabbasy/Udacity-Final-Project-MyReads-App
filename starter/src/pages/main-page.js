@@ -11,7 +11,7 @@ function MainPage({ books, isLoaded, onChangeBookshelf }) {
                 <h1>MyReads</h1>
             </div>
             {!isLoaded ?
-                <div class="loader"></div>
+                <div className="loader"></div>
                 : (
                     <>
                         <div className="list-books-content">
