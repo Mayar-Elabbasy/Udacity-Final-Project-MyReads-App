@@ -9,12 +9,14 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
 
   useEffect(() => {
     const getBooks = async () => {
       const res = await BooksAPI.getAll();
       setBooks(res);
+      setIsLoaded(true)
     };
     getBooks();
   }, []);
@@ -51,6 +53,7 @@ function App() {
             exact path="/"
             element={<MainPage
               books={books}
+              isLoaded={isLoaded}
               onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />} />
         </Routes>
       </Router>
