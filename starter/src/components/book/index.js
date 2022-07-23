@@ -1,6 +1,7 @@
 import React from 'react'
+import BookshelfChanger from '../bookshelf-changer';
 
-function Book({ image, title, authors }) {
+function Book({ book, image, title, authors, shelf, onChangeBookshelf }) {
     return (
         <div className="book">
             <div className="book-top">
@@ -12,19 +13,7 @@ function Book({ image, title, authors }) {
                         backgroundImage: `url(${image})`,
                     }}
                 ></div>
-                <div className="book-shelf-changer">
-                    <select>
-                        <option value="none" disabled>
-                            Move to...
-                        </option>
-                        <option value="currentlyReading">
-                            Currently Reading
-                        </option>
-                        <option value="wantToRead">Want to Read</option>
-                        <option value="read">Read</option>
-                        <option value="none">None</option>
-                    </select>
-                </div>
+                <BookshelfChanger currentShelf={shelf} book={book} onChangeBookshelf={onChangeBookshelf} />
             </div>
             <div className="book-title">{title}</div>
             {authors.length && (

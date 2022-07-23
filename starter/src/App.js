@@ -7,14 +7,23 @@ function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const getBooks = async () => {
-      const res = await BooksAPI.getAll();
-      setBooks(res);
-    };
+  const getBooks = async () => {
+    const res = await BooksAPI.getAll();
+    setBooks(res);
+  };
 
+  useEffect(() => {
     getBooks();
   }, []);
+
+  const handleChangeBookshelf = (book, shelf) => {
+    const change = async () => {
+      await BooksAPI.update(book, shelf).then(() => {
+        getBooks();
+      });
+    };
+    change();
+  }
 
   return (
     <div className="app">
@@ -45,9 +54,18 @@ function App() {
           </div>
           <div className="list-books-content">
             <div>
-              <Bookshelf books={books.filter((book) => book.shelf === "currentlyReading")} bookshelfTitle={"Currently Reading"} />
-              <Bookshelf books={books.filter((book) => book.shelf === "wantToRead")} bookshelfTitle={"Want To Read"} />
-              <Bookshelf books={books.filter((book) => book.shelf === "read")} bookshelfTitle={"Read"} />
+              <Bookshelf
+                books={books.filter((book) => book.shelf === "currentlyReading")}
+                bookshelfTitle={"Currently Reading"}
+                onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />
+              <Bookshelf
+                books={books.filter((book) => book.shelf === "wantToRead")}
+                bookshelfTitle={"Want To Read"}
+                onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />
+              <Bookshelf
+                books={books.filter((book) => book.shelf === "read")}
+                bookshelfTitle={"Read"}
+                onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />
             </div>
           </div>
           <div className="open-search">
