@@ -8,7 +8,7 @@ function MainPage({ books, isLoaded, onChangeBookshelf }) {
     return (
         <div className="list-books">
             <div className="list-books-title">
-                <h1>MyReads</h1>
+                <h1>MyReads by Mayar Elabbasy</h1>
             </div>
             {!isLoaded ?
                 <div className="loader"></div>
