@@ -7,19 +7,26 @@ function App() {
   const [showSearchPage, setShowSearchpage] = useState(false);
   const [books, setBooks] = useState([]);
 
-  const getBooks = async () => {
-    const res = await BooksAPI.getAll();
-    setBooks(res);
-  };
 
   useEffect(() => {
+    const getBooks = async () => {
+      const res = await BooksAPI.getAll();
+      setBooks(res);
+    };
     getBooks();
   }, []);
 
   const handleChangeBookshelf = (book, shelf) => {
     const change = async () => {
       await BooksAPI.update(book, shelf).then(() => {
-        getBooks();
+        // update the value of the bookshelf with the new shelf
+        book.shelf = shelf;
+        // remove the selected book from the books array as it contains old data
+        let newBooks = books.filter(selectedBook => book.id !== selectedBook.id)
+        // add the book with updated shelf info to the books array
+        newBooks.push(book);
+        // update the state accordingly
+        setBooks(newBooks);
       });
     };
     change();
