@@ -48,6 +48,7 @@ function App() {
           <Route
             path="/search"
             element={<SearchPage
+              books={books}
               onChangeBookshelf={(book, shelf) => handleChangeBookshelf(book, shelf)} />} />
           <Route
             exact path="/"
