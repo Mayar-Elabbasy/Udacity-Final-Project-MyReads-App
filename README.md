@@ -88,7 +88,8 @@ Remember that good React design practice is to create new JS files for each comp
            
     └──pages
         ├── main-page.js # contain all the logic for main page that holds the shelves data
-        └── search-page.js # contain all the logic for search page where you can search for any book you wish for
+        ├── search-page.js # contain all the logic for search page where you can search for any book you wish for
+        └── not-found-page.js # contain all the logic for not found page that acts as a fallback for inexistent routes
         
     └──utils
         ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
@@ -97,9 +98,11 @@ Remember that good React design practice is to create new JS files for each comp
     ├── App.css # Styles for your app. Feel free to customize this as you desire.
     ├── App.js # This is the root of your app. Contains static HTML right now.
     ├── icons # Helpful images for your app. Use at your discretion.
-    │   ├── add.svg
-    │   ├── arrow-back.svg
-    │   └── arrow-drop-down.svg
+        ├── add.svg
+        ├── arrow-back.svg
+        ├── arrow-drop-down.svg
+        └── not-found.gif
+    
     ├── index.css # Global styles. You probably won't need to change anything here.
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
