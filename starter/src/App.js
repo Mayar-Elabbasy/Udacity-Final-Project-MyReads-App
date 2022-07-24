@@ -6,6 +6,7 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import MainPage from "./pages/main-page";
 import SearchPage from "./pages/search-page";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NotFoundPage from "./pages/not-found-page";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -45,6 +46,7 @@ function App() {
     <div className="app">
       <Router>
         <Routes>
+          <Route path="*" element={<NotFoundPage />} />
           <Route
             path="/search"
             element={<SearchPage
