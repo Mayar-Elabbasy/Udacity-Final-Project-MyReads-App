@@ -107,6 +107,14 @@ Remember that good React design practice is to create new JS files for each comp
     └── index.js # You should not need to modify this file. It is used for DOM rendering only.
 ```
 
+## Author
+**Mayar Elabbasy**
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+
+
 ## Backend Server
 
 To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
@@ -158,8 +166,3 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebook/create-react-app/blob/main/packages/cra-template/template/README.md).
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
